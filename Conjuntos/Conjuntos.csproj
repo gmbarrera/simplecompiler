@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="parser\Parser.cs" />
+    <Compile Include="parser\Token.cs" />
+    <Compile Include="parser\Tokenizer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
