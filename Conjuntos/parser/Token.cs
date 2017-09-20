@@ -16,5 +16,8 @@ namespace Conjuntos.parser
             this.token = token;
             this.sequence = sequence;
         }
+
+
+
     }
 }
