@@ -43,11 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Parser\Parser.cs" />
+    <Compile Include="ConjuntoExpresionNode.cs" />
+    <Compile Include="ConjuntoNode.cs" />
+    <Compile Include="CreacionExpresionNode.cs" />
+    <Compile Include="ExpresionNode.cs" />
+    <Compile Include="NumeroExpresionNode.cs" />
+    <Compile Include="Parser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Parser\Token.cs" />
-    <Compile Include="Parser\Tokenizer.cs" />
+    <Compile Include="Token.cs" />
+    <Compile Include="Tokenizer.cs" />
+    <Compile Include="VariableExpresionNode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

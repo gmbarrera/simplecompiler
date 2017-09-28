@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleCompiler.Parser
-{
+namespace Conjuntos.parser
+{   //en java 'final' en c# sealed para class y methods y 'readonly' para variables
+
     public class Token
     {
         public const int MAXIMO = 0;
@@ -24,6 +25,10 @@ namespace SimpleCompiler.Parser
         public const int NUMERO = 13;
         public const int COMA = 14;
         public const int ASIGNACION = 15;
+        public const int ABRIR_PARENTESIS = 16;
+        public const int CERRAR_PARENTESIS = 17;
+
+
 
         public readonly int token;
         public readonly String sequence;
@@ -36,5 +41,6 @@ namespace SimpleCompiler.Parser
 
 
 
-    }
+
+            }
 }

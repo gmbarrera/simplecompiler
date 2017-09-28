@@ -1,37 +1,27 @@
-﻿using SimpleCompiler.Parser;
+﻿using Conjuntos.parser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleParser
+namespace Conjuntos
 {
     class Program
     {
         static void Main(string[] args)
         {
             //String codigo = "var miconjunto = set() \n var oo = set() n = 653";
-            String codigo = "[34,43]";
-            Tokenizer tk = new Tokenizer();
-
-
-            tk.Add("\\[", Token.ABRIR_CORCHETE);
-            tk.Add("\\]", Token.CERRAR_CORCHETE);
-            tk.Add(",", Token.COMA);
-            tk.Add("=", Token.ASIGNACION);
-            tk.Add("[0-9]+", Token.NUMERO);
-
-
-            tk.Tokenize(codigo);
-            List<Token> tokens = tk.GetTokens();
-            tokens.ForEach(t => Console.WriteLine(t.sequence));
+            String codigo = "[34,43] ";
+            codigo += "hola = [6,2]";
+            codigo += "miconjunto = set(10,50,2) ";
+            codigo += "sarasa = hola ";
+            codigo += "sarasa ";
 
             Parser p = new Parser();
+            p.Parse(codigo);
 
-            p.Parse(tokens);
 
-            Console.WriteLine("Listo.");
             Console.ReadKey();
         }
     }
