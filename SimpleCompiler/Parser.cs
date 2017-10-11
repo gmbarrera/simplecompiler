@@ -37,8 +37,12 @@ namespace Conjuntos.parser
             tokenizer.Add("=", Token.ASIGNACION);
             tokenizer.Add("set", Token.CREAR);
             tokenizer.Add("mostrar", Token.MOSTRAR);
+            tokenizer.Add("maximo", Token.MAXIMO);
+            tokenizer.Add("minimo", Token.MINIMO);
+            tokenizer.Add("media", Token.MEDIA);
             tokenizer.Add("[0-9]+", Token.NUMERO);
             tokenizer.Add("[a-z]+", Token.VARIABLE);
+            
 
             return tokenizer;
         }
@@ -81,6 +85,18 @@ namespace Conjuntos.parser
                 return node;
 
             node = Mostrar();
+            if (node != null)
+                return node;
+
+            node = Maximo();
+            if (node != null)
+                return node;
+
+            node = Minimo();
+            if (node != null)
+                return node;
+
+            node = Media();
             if (node != null)
                 return node;
 
@@ -185,7 +201,7 @@ namespace Conjuntos.parser
              return null;
         }
 
-        public MostrarExpresionNode Mostrar()
+        private MostrarExpresionNode Mostrar()
         {
             if (this.lookahead.token == Token.MOSTRAR)
             {
@@ -195,17 +211,73 @@ namespace Conjuntos.parser
                 if (this.lookahead.token == Token.VARIABLE)
                 {
                     this.variables[this.lookahead.sequence].ForEach(i => Console.Write(i + ","));
-                    
+                    Console.WriteLine();
+
                     return new MostrarExpresionNode(this.variables[this.lookahead.sequence]);
                 }
                 else
-                    throw new Exception("Syntax error");
+                    throw new Exception("Syntax error. Variable name missing.");
             }
 
             return null;
         }
 
+        private MinimoExpresionNode Maximo()
+        {
+            if (this.lookahead.token == Token.MINIMO)
+            {
+                NextToken();
 
+                if (this.lookahead.token == Token.VARIABLE)
+                {
+                    int m = variables[this.lookahead.sequence].Min();
+                    List<int> c = new List<int>();
+                    c.Add(m);
 
+                    return new MinimoExpresionNode(c);
+                }
+                throw new Exception("Syntax error. Variable name missing.");
+            }
+            return null;
+        }
+
+        private MaximoExpresionNode Minimo()
+        {
+            if (this.lookahead.token == Token.MAXIMO)
+            {
+                NextToken();
+
+                if (this.lookahead.token == Token.VARIABLE)
+                {
+                    int m = variables[this.lookahead.sequence].Max();
+                    List<int> c = new List<int>();
+                    c.Add(m);
+
+                    return new MaximoExpresionNode(c);
+                }
+                throw new Exception("Syntax error. Variable name missing.");
+            }
+            return null;
+        }
+
+        private MediaExpresionNode Media()
+        {
+            if (this.lookahead.token == Token.MEDIA)
+            {
+                NextToken();
+
+                if (this.lookahead.token == Token.VARIABLE)
+                {
+                    int s = variables[this.lookahead.sequence].Sum();
+
+                    List<int> c = new List<int>();
+                    c.Add(s / variables[this.lookahead.sequence].Count);
+
+                    return new MediaExpresionNode(c);
+                }
+                throw new Exception("Syntax error. Variable name missing.");
+            }
+            return null;
+        }
     }
 }

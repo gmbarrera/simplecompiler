@@ -11,11 +11,11 @@ namespace Conjuntos.parser
     {
         public const int MAXIMO = 0;
         public const int MINIMO = 1;
-        public const int MEDIANA = 2;
+        public const int MEDIA = 2;
         public const int INTERSECCION = 3;
         public const int UNION = 4;             //Brian
         public const int EXTRAER = 5;           //Luc
-        public const int CREAR = 6;             //hecha
+        public const int CREAR = 6;                     //OK
         public const int LONGITUD = 7;
         public const int AGREGAR = 8;           //Fer
         public const int ELIMINAR = 9;

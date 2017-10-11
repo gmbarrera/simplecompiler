@@ -18,6 +18,8 @@ namespace Conjuntos
             codigo += "miconjunto = set(10,50,2) ";
             codigo += "sarasa = hola ";
             codigo += "mostrar sarasa ";
+            codigo += "m = maximo hola ";
+            codigo += "mostrar m ";
 
             Parser p = new Parser();
             p.Parse(codigo);

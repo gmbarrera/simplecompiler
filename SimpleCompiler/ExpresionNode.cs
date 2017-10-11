@@ -7,12 +7,15 @@ namespace SimpleCompiler
 {
     public enum TipoNodo
     {
-        ExpresionNode = 1,
-        VariableNode = 2,
-        ConjuntoNode = 3,
-        NumeroNode = 4,
-        CreacionNode = 5,
-        MostrarNode = 6,
+        ExpresionNode,
+        VariableNode,
+        ConjuntoNode,
+        NumeroNode,
+        CreacionNode,
+        MostrarNode,
+        MaximoNode,
+        MinimoNode,
+        MediaNode,
     }
 
     public interface ExpresionNode
