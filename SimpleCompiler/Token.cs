@@ -13,12 +13,13 @@ namespace Conjuntos.parser
         public const int MINIMO = 1;
         public const int MEDIANA = 2;
         public const int INTERSECCION = 3;
-        public const int UNION = 4;
-        public const int EXTRAER = 5;
-        public const int CREAR = 6;
+        public const int UNION = 4;             //Brian
+        public const int EXTRAER = 5;           //Luc
+        public const int CREAR = 6;             //hecha
         public const int LONGITUD = 7;
-        public const int AGREGAR = 8;
+        public const int AGREGAR = 8;           //Fer
         public const int ELIMINAR = 9;
+
         public const int ABRIR_CORCHETE = 10;
         public const int CERRAR_CORCHETE = 11;
         public const int VARIABLE = 12;
@@ -27,8 +28,7 @@ namespace Conjuntos.parser
         public const int ASIGNACION = 15;
         public const int ABRIR_PARENTESIS = 16;
         public const int CERRAR_PARENTESIS = 17;
-
-
+        public const int MOSTRAR = 18;
 
         public readonly int token;
         public readonly String sequence;
@@ -38,9 +38,5 @@ namespace Conjuntos.parser
             this.token = token;
             this.sequence = sequence;
         }
-
-
-
-
-            }
+    }
 }

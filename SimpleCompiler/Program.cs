@@ -11,12 +11,13 @@ namespace Conjuntos
     {
         static void Main(string[] args)
         {
-            //String codigo = "var miconjunto = set() \n var oo = set() n = 653";
+            //TODO: inter  union   mostrar
+            
             String codigo = "[34,43] ";
             codigo += "hola = [6,2]";
             codigo += "miconjunto = set(10,50,2) ";
             codigo += "sarasa = hola ";
-            codigo += "sarasa ";
+            codigo += "mostrar sarasa ";
 
             Parser p = new Parser();
             p.Parse(codigo);

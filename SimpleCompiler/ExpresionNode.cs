@@ -12,6 +12,7 @@ namespace SimpleCompiler
         ConjuntoNode = 3,
         NumeroNode = 4,
         CreacionNode = 5,
+        MostrarNode = 6,
     }
 
     public interface ExpresionNode

@@ -36,6 +36,7 @@ namespace Conjuntos.parser
             tokenizer.Add(",", Token.COMA);
             tokenizer.Add("=", Token.ASIGNACION);
             tokenizer.Add("set", Token.CREAR);
+            tokenizer.Add("mostrar", Token.MOSTRAR);
             tokenizer.Add("[0-9]+", Token.NUMERO);
             tokenizer.Add("[a-z]+", Token.VARIABLE);
 
@@ -52,6 +53,7 @@ namespace Conjuntos.parser
 
         private void Parse(List<Token> tokens)
         {
+            //Para hacer una copia de la lista
             this.tokens = new LinkedList<Token>();
             foreach (var item in tokens)
                 this.tokens.AddLast(item);
@@ -61,8 +63,6 @@ namespace Conjuntos.parser
             while (this.lookahead != null)
             {
                 ExpresionNode e = Expresion();
-                e.GetConjunto().ForEach(i => Console.Write(i + ","));
-                Console.WriteLine();
             }
         }
 
@@ -77,6 +77,10 @@ namespace Conjuntos.parser
                 return node;
 
             node = Creacion();
+            if (node != null)
+                return node;
+
+            node = Mostrar();
             if (node != null)
                 return node;
 
@@ -180,8 +184,26 @@ namespace Conjuntos.parser
              }
              return null;
         }
-        
 
+        public MostrarExpresionNode Mostrar()
+        {
+            if (this.lookahead.token == Token.MOSTRAR)
+            {
+                NextToken();
+
+                //Solo nos enfocamos a mostrar variables
+                if (this.lookahead.token == Token.VARIABLE)
+                {
+                    this.variables[this.lookahead.sequence].ForEach(i => Console.Write(i + ","));
+                    
+                    return new MostrarExpresionNode(this.variables[this.lookahead.sequence]);
+                }
+                else
+                    throw new Exception("Syntax error");
+            }
+
+            return null;
+        }
 
 
 

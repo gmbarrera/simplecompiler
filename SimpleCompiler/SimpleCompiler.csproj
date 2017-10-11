@@ -47,6 +47,7 @@
     <Compile Include="ConjuntoNode.cs" />
     <Compile Include="CreacionExpresionNode.cs" />
     <Compile Include="ExpresionNode.cs" />
+    <Compile Include="MostrarExpresionNode.cs" />
     <Compile Include="NumeroExpresionNode.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Program.cs" />
