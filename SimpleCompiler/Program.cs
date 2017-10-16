@@ -20,6 +20,8 @@ namespace Conjuntos
             codigo += "mostrar sarasa ";
             codigo += "m = maximo hola ";
             codigo += "mostrar m ";
+            codigo += "extraer sarasa,0 ";
+            codigo += "mostrar sarasa ";
 
             Parser p = new Parser();
             p.Parse(codigo);
