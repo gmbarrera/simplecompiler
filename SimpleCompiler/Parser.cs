@@ -13,6 +13,7 @@ namespace Conjuntos.parser
         public Token lookahead;
 
         private Dictionary<String, List<int>> variables = new Dictionary<string,List<int>>();
+        private CodeBuilder codeBuilder = new CodeBuilder();
 
         private void NextToken()
         {
@@ -46,7 +47,7 @@ namespace Conjuntos.parser
 
             return tokenizer;
         }
-
+        
         public void Parse(String code)
         {
             Tokenizer tokenizer = BuildTokenizer();
@@ -68,6 +69,9 @@ namespace Conjuntos.parser
             {
                 ExpresionNode e = Expresion();
             }
+
+            codeBuilder.PrintCode();
+            codeBuilder.PrintVariables();
         }
 
         private ExpresionNode Expresion()
@@ -118,6 +122,9 @@ namespace Conjuntos.parser
                     ExpresionNode exp = Expresion();
                     c = exp.GetConjunto();
                     this.variables.Add(nombreVariable, c);
+
+                    codeBuilder.BuildAssignment(nombreVariable, c);
+
                 }
                 else
                 {
@@ -195,6 +202,10 @@ namespace Conjuntos.parser
 
                  for (int i = desde; i < hasta; i += salto)
                      c.Add(i);
+
+
+                codeBuilder.BuildCreateSet(desde, hasta, salto);
+
 
                  return new CreacionExpresionNode(c);
              }

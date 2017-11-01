@@ -23,8 +23,7 @@ namespace Conjuntos
 
             Parser p = new Parser();
             p.Parse(codigo);
-
-
+            
             Console.ReadKey();
         }
     }

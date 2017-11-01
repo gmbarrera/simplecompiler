@@ -18,9 +18,16 @@ namespace SimpleCompiler
         MediaNode,
     }
 
-    public interface ExpresionNode
+    public abstract class ExpresionNode
     {
-        TipoNodo GetTipoNodo();
-        List<int> GetConjunto();
+        public static int id = 0;
+
+        public ExpresionNode()
+        {
+            ExpresionNode.id++;
+        }
+
+        public abstract TipoNodo GetTipoNodo();
+        public abstract List<int>  GetConjunto();
     }
 }

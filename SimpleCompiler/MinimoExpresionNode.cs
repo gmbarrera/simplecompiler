@@ -15,12 +15,12 @@ namespace SimpleCompiler
             this.c = c;
         }
 
-        public List<int> GetConjunto()
+        public override List<int> GetConjunto()
         {
             return this.c;
         }
 
-        public TipoNodo GetTipoNodo()
+        public override TipoNodo GetTipoNodo()
         {
             return TipoNodo.MinimoNode;
         }

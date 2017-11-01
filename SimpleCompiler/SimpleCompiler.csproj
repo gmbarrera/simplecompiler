@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeBuilder.cs" />
     <Compile Include="ConjuntoExpresionNode.cs" />
     <Compile Include="ConjuntoNode.cs" />
     <Compile Include="CreacionExpresionNode.cs" />

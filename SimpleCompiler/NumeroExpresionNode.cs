@@ -7,12 +7,12 @@ namespace SimpleCompiler
 {
     class NumeroExpresionNode : ExpresionNode
     {
-        public TipoNodo GetTipoNodo()
+        public override TipoNodo GetTipoNodo()
         {
             return TipoNodo.NumeroNode;
         }
 
-        public List<int> GetConjunto()
+        public override List<int> GetConjunto()
         {
             return null;
         }
