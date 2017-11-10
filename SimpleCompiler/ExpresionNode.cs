@@ -16,6 +16,7 @@ namespace SimpleCompiler
         MaximoNode,
         MinimoNode,
         MediaNode,
+        ExtraerNode,
     }
 
     public abstract class ExpresionNode

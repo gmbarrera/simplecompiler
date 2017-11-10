@@ -41,9 +41,9 @@ namespace Conjuntos.parser
             tokenizer.Add("maximo", Token.MAXIMO);
             tokenizer.Add("minimo", Token.MINIMO);
             tokenizer.Add("media", Token.MEDIA);
+            tokenizer.Add("extraer", Token.EXTRAER);
             tokenizer.Add("[0-9]+", Token.NUMERO);
             tokenizer.Add("[a-z]+", Token.VARIABLE);
-            
 
             return tokenizer;
         }
@@ -101,6 +101,10 @@ namespace Conjuntos.parser
                 return node;
 
             node = Media();
+            if (node != null)
+                return node;
+
+            node = Extraer();
             if (node != null)
                 return node;
 
@@ -288,6 +292,41 @@ namespace Conjuntos.parser
                 }
                 throw new Exception("Syntax error. Variable name missing.");
             }
+            return null;
+        }
+
+        private ExtraerExpresionNode Extraer()
+        {
+            if (this.lookahead.token == Token.EXTRAER)
+            {
+                NextToken();
+
+                if (this.lookahead.token == Token.VARIABLE)
+                {
+                    String s = this.lookahead.sequence;
+
+                    NextToken();
+
+                    if (this.lookahead.token == Token.COMA)
+                    {
+                        NextToken();
+
+                        if (this.lookahead.token == Token.NUMERO)
+                        {
+                            List<int> c = this.variables[s];
+                            c.RemoveAt(Int32.Parse(this.lookahead.sequence));
+                            return new ExtraerExpresionNode(c);
+                        }
+                        else
+                            throw new Exception("Syntax error. Expected 2 argument, only 1 given.");
+                    }
+                    else
+                        throw new Exception("Syntax error. Expected comma after variable.");
+                }
+                else
+                    throw new Exception("Syntax error. Expected 2 arguments.");
+            }
+
             return null;
         }
     }
